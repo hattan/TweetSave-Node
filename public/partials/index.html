@@ -1,0 +1,23 @@
+<search-form></search-form>
+
+<div class="alert alert-success" ng-show="message">{{message}}</div>
+<section ng-show="results">
+    <div class="alert alert-info">
+        <slider value="limit"></slider>
+        {{limit}}
+    </div>
+    <h4>Tweets</h4>
+    <div class="tweet row" top="item in results" take="limit" >
+        <img ng-src="{{item.user.profile_image_url}}" class="span1">
+
+        <div class="tweetDetails span8">
+            <span class="name">{{item.user.name}}</span>
+            <span class="username">@@{{item.user.screen_name}}</span>
+            <div ng-bind-html-unsafe="item.text | linky | TwitterLink"></div>
+        </div>
+
+        <div class="span2">
+            <button class="btn btn-primary" ng-click="saveTweet(item)">Save</button>
+        </div>
+    </div>
+</section>
